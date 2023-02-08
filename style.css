@@ -1,0 +1,37 @@
+@media (min-width: 1360px){ #loginrow{ padding: 135px 0; } 
+#opcje{
+    margin-right: 15px;
+}
+#opisy{ 
+    display: inline-block;
+}
+#szerokosckolumn{
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+#number{
+    width: 50px;
+    margin-left: 10px;
+}
+}
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3) {
+    #opcje{
+        margin-right: 15px;
+    }
+    #opisy{ 
+        display: inline-block;
+    }
+    #szerokosckolumn{
+        display: inline-block;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    #number{
+        width: 50px;
+        margin-left: 10px;
+    }
+}

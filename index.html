@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Tygodniowy Harmonogram Pracy</title>
 </head>
 <body>
     <div id="header">
-    <input type="checkbox">Wyświetlaj opisy</input>
-     <p>Szerokość kolumn <input type="number"></input></p>
-    </div>
+        <select id="opcje">
+            <option value="Opcja 1">Filtruj datą</option>
+            <option value="Opcja 2">Filtruj </option>
+          </select>
+        <input type="checkbox" id="opisy">Wyświetlaj opisy</input>
+        <p id="szerokosckolumn">Szerokość kolumn <input type="number" id="number"></input></p>
+      </div>
 </body>
 </html>
