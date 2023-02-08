@@ -34,12 +34,12 @@ $conn = mysqli_connect("localhost", "root", "", "tygodniowy_harmonogram_pracy");
       die("Connection failed:". $conn-> connect_error);
    }
 
-   $sql = "SELECT data, imie from tyhoharmonogrampracy";
+   $sql = "SELECT date, imie, password from tygodniowyharmonogrampracy";
    $result = $conn-> query($sql);
 
    if ($result-> num_rows > 0) {
       while ($row = $result-> fetch_assoc()) {
-        echo $row["data"] . "<td><td>" . $row["imie"] . "</td></tr>";
+        echo "<tr><td>". $row["date"] . "</td><td>" . $row["imie"] . "<td><td>" . $row["password"] . "</td></tr>";
       }
       echo "</table>";
    }
