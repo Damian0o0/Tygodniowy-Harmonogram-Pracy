@@ -1,7 +1,10 @@
 @media (min-width: 1360px){ 
-
+#header{
+    background-color: rgb(83, 81, 207);
+}
 #opcje{
     margin-right: 15px;
+    margin-left: 15px;
 }
 #opisy{ 
     display: inline-block;
