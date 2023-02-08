@@ -14,7 +14,7 @@
             <option value="Opcja 2" class="options">Filtruj </option>
           </select>
         <input type="checkbox" id="opisy">Wyświetlaj opisy</input>
-        <p id="szerokosckolumn">Szerokość kolumn <input type="number" id="number"></input></p>
+        <p id="szerokosckolumn">Szerokość kolumn <input oninput="" type="number" min="1" id="number"></input></p>
         <label for="week-select">Choose week:</label>
           <select id="week-select">
             <option value="week-1">1</option>
@@ -22,27 +22,34 @@
           </select>
       </div>
     <div id="tabela">
-        <table id="schedule-table">
-            <tr>
-                <th id="date-1">2023-02-06</th>
-                <th id="date-2">2023-02-07</th>
-                <th id="date-3">2023-02-08</th>
-                <th id="date-4">2023-02-09</th>
-                <th id="date-5">2023-02-10</th>
-                <th id="date-6">2023-02-11</th>
-                <th id="date-7">2023-02-12</th>
-            </tr>
-            <tr>
-                <td>Random</td>
-                <td>Random</td>
-                <td>Random</td>
-                <td>Random</td>
-                <td>Random</td>
-                <td>Random</td>
-                <td>Random</td>
-            </tr>
-          </table>
-          
+    <table>
+      <tr>
+      <th>Id</th>
+      <th>Username</th>
+      <th>Password</th>
+      </tr>
+      <?php
+$conn = mysqli_connect("localhost", "root", "", "testttt");
+   if ($conn-> connect_error) {
+      die("Connection failed:". $conn-> connect_error);
+   }
+
+   $sql = "SELECT id, username, password from login";
+   $result = $conn-> query($sql);
+
+   if ($result-> num_rows > 0) {
+      while ($row = $result-> fetch_assoc()) {
+        echo "<tr><td>". $row["id"] . "</td><td>" . $row["username"] . "<td><td>" . $row["password"] . "</td></tr>";
+      }
+      echo "</table>";
+   }
+   else {
+    echo "0 result";
+   }
+   $conn->close();
+?>
+    </table>
     </div>
+    
 </body>
 </html>
