@@ -10,23 +10,21 @@
 <body>
     <div id="header">
         <select id="opcje">
-            <option value="Opcja 1" class="options">Filtruj datą</option>
-            <option value="Opcja 2" class="options">Filtruj </option>
+            <option value="Opcja 1" class="options">Data</option>
+            <option value="Opcja 2" class="options">Imie</option>
+            <option value="Opcja 3" class="options">Nazwisko</option>
           </select>
         <input type="checkbox" id="opisy">Wyświetlaj opisy</input>
-        <p id="szerokosckolumn">Szerokość kolumn <input oninput="" type="number" min="1" id="number"></input></p>
-        <label for="week-select">Choose week:</label>
-          <select id="week-select">
-            <option value="week-1">1</option>
-            <option value="week-2">2</option>
-          </select>
+        <p id="szerokosckolumn">Szerokość kolumn <input oninput="changeWidth()" type="number" id="number"></input></input></p>
+        <button onclick="changeWidth()">Change Width</button>
       </div>
     <div id="tabela">
     <table>
       <tr>
-      <th>Id</th>
-      <th>Username</th>
-      <th>Password</th>
+      <th>Data</th>
+      <th>Imie</th>
+      <th>Nazwisko</th>
+      <th>Opis</th>
       </tr>
       <?php
 $conn = mysqli_connect("localhost", "root", "", "tygodniowy_harmonogram_pracy");
@@ -34,12 +32,12 @@ $conn = mysqli_connect("localhost", "root", "", "tygodniowy_harmonogram_pracy");
       die("Connection failed:". $conn-> connect_error);
    }
 
-   $sql = "SELECT date, imie, password from tygodniowyharmonogrampracy";
+   $sql = "SELECT data, imie, nazwisko, opis from tygodniowyharmonogrampracy";
    $result = $conn-> query($sql);
 
    if ($result-> num_rows > 0) {
       while ($row = $result-> fetch_assoc()) {
-        echo "<tr><td>". $row["date"] . "</td><td>" . $row["imie"] . "<td><td>" . $row["password"] . "</td></tr>";
+        echo "<tr><td>". $row["data"] . "</td><td>" . $row["imie"] . "<td><td>" . $row["nazwisko"] . "</td></tr>". $row["opis"] . "</td></tr>";
       }
       echo "</table>";
    }
@@ -49,7 +47,16 @@ $conn = mysqli_connect("localhost", "root", "", "tygodniowy_harmonogram_pracy");
    $conn->close();
 ?>
     </table>
+    <script>
+  function changeWidth() {
+    var inputValue = document.getElementById("number").value;
+    var table = document.querySelector("#tabela table");
+    var ths = table.getElementsByTagName("th");
+    for (var i = 0; i < ths.length; i++) {
+        ths[i].style.width = inputValue + "%";
+    }
+}
+</script>
     </div>
-    
 </body>
 </html>
